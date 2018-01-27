@@ -1,0 +1,189 @@
+\documentclass[11pt]{article}
+
+\usepackage{cmap}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\setlength{\parindent}{0cm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+\begin{document}
+
+\section{Adverse Selection}
+
+In reality, information is often asymmetrically held by market participants. Examples of such situations are
+
+\begin{itemize}
+	\item Firms do not know the abilities of workers to be hired
+	\item Investors / creditors cannot observe the abilities / projects of firms' managers
+	\item Automobile insurance companies do not know the individual driving skills of their customers
+	\item Buyers of used car can rarely check the cars' qualities perfectly
+\end{itemize}
+
+Such hidden information can lead to adverse selection, signalling and screening. Following, we will examine the case of adverse selection.
+
+\subsection{Basic Labour Market Model}
+
+Assume that in a market, there are many workers of different types $\theta$, e.g. with different productivity, such that
+
+	$$ \theta \in [\underline{\theta}, \overline{\theta}] \text{ with }0 \leq \underline{\theta} < \overline{\theta} < \infty.  $$
+	
+The proportion of workers with productivity of $\theta$ or less is given by the cumulative distribution function $F(\theta)$. Additionally, we assume there to be many identical potential firms that can hire workers seeking to maximise their expected profits. A worker can choose to work either at a firm or at home, and the utility of worker $\theta$ is thereby given by
+
+	$$ u(w, \theta) = \begin{cases} \omega & \text{ if he accepts wage } \omega \\ r(\theta) & \text{ if he does not accept } \omega \end{cases} $$
+	
+Firms produce with labour only and have constant production technologies
+
+	$$ \theta = \text{ output (=revenue) of worker } \theta $$
+	
+Pareto-optimum: Set of workers employed is $\theta = \left\{ \theta \colon \theta \geq r(\theta) \right\}$.
+
+\subsubsection{Case 1: $\theta$ is publicly observable}
+
+The resulting wage will depend on each type, i.e. $\omega(\theta)$. Because the labour of each different type of worker is a distinct, publicly known good, there is a distinct equilibrium wage. As the profit of a firm ($\pi$) from a type $\theta$ worker:
+
+	$$ \pi = \theta - \omega(\theta) $$
+
+They will only seek employment if $\theta > \omega(\theta)$. The resulting demand for labour ($z$) of type $\theta$ is hence:
+
+	$$ z(\theta) = \begin{cases} 0 & \text{ if } \theta < \omega(\theta) \\ [0, \infty) & \text{ if } \theta = w(\theta) \\ \infty & \text{ if } \theta > \omega(\theta) \end{cases} $$
+
+Therefore, given the competitive, constant returns nature of the firm, in a \textit{competitive} equilibrium the different wage offers (i.e. $\pi = 0$) are
+ 
+	$$ \omega(\theta) = \theta, $$
+	
+and the set of workers accepting employment in a firm is
+
+	$$ \Theta = \left\{ \theta \colon r(\theta) \leq \theta \right\} $$
+	
+As expected from the first fundamental welfare theorem, the outcome is, due to the competitive nature of the market, a Pareto optimal equilibrium. Note: For this result firms need not know $r(\theta)$, and thus, the market can successfully aggregate and process information!
+
+\subsubsection{Case 2: $\theta$ is ex ante observable only to the worker}
+
+We have to begin by noting that the resulting equilibrium in this competitive environment is of asymmetric information. A firm will learn about $\theta$ only \textit{ex post}, therefore  this is not useful for \textit{ex ante} contracting. This means the wage cannot depend on $\theta$, and hence, there must be a single wage $\omega$ offered to all workers. Again, a worker of type $\theta$ is willing to work for a firm if and only if $r(\theta) \leq \omega$. Hence, the set of worker types who are willing to accept employment at wage rate $\omega$ is
+
+	$$ \Theta(\omega) = \left\{ \theta \colon r(\theta) \leq \omega \right\} $$
+	
+and gives us the labour supply. Let $\mu$ be the expected average productivity of employed workers (to be determined). If a firm assumes $\mu$, its demand for labour is given by
+
+	$$ z(\omega)= \begin{cases} 0 & \text{ if } \mu < \omega \\ [0, \infty) & \text{ if } \mu = \omega \\ \infty & \text{ if } \mu > \omega \end{cases} $$ 
+	
+Now, if worker types in set $\Theta^*$ are accepting employment offers in a competitive equilibrium, and if firms' beliefs about the productivity of potential employees correctly reflect the actual average productivity of the workers hired in this equilibrium, then we must have 
+
+	$$ \mu = \mathbb{E} \left[\theta ~|~\theta \in \Theta^* \right] $$
+	
+	Hence, the labour demand implies that the demand can equal its supply in an equilibrium with a positiv level of employment if and only if 
+	
+	$$ w = \mathbb{E} \left[ \theta ~|~ \theta \in \Theta^* \right] $$
+	
+	This leads to the notion of a competitive equilibria
+	
+	\begin{definition}
+		A \textbf{competitive equilibrium} is a wage $\omega^*$, an employment set $\Theta^*$, and a belief $\mu^*$ such that
+		
+		\begin{align*}
+			\Theta^* & = \left\{ \theta \colon r(\theta) \leq \omega^* \right\} \\
+			\omega^* & = \mu^* \\
+			\mu^* & = \begin{cases} \mathbb{E} \left[ \theta ~|~\theta \in \Theta^* \right] & \text{ if } \Theta^* \neq \emptyset \\ \mathbb{E} \left[ \theta \right] & \text{ if } \Theta^* = \emptyset \end{cases}
+		\end{align*}
+	\end{definition}
+
+Note, that the expectation in the definition above seems not to be well defined when no workers are accepting employment in an equilibrium, i.e. when $\Theta^* = \emptyset$. In the following discussions however, we can assume for simplicity that in this circumstance each firm's expectation of potential employees' average productivity is simply the unconditional expectation $\mathbb{E} \left[ \theta \right]$, and we take 
+
+	$$ \omega^* = \mathbb{E} \left[ \theta \right] $$
+	
+in any such equilibrium. Typically a competitive equilibrium as defined above will fail to be Pareto optimal which is seen in the following example.
+
+\begin{example}
+	Assume $r(\theta) = r$ for all $\theta$, with $\underline{\theta} < r < \overline{\theta}$, i.e. every worker is equally productive at home. The Pareto optimal allocation of labour in this setting has workers with $\theta \geq r$ accepting employment at a firm and those with $\theta < r$ not doing so. In the competitive equilibrium, a worker is willing to accept employment if $\omega \geq r$. This means at a given wage, $\Theta(\omega)$, is either:
+	
+	$$ \Theta = \left[ \underline{\theta}, \overline{\theta} \right] \text{ if } \omega \geq r ~\text{ or }~ \Theta = \emptyset \text{ if } \omega < r $$
+	
+	Thus, in either case, $\mu = \mathbb{E}\left[ \theta ~|~\theta \in \Theta^*(\omega) \right] = \mathbb{E} \left[ \theta \right]$, i.e. for all $\omega$ and unconditional. By the definition of competitive equilibria  the equilibrium wage rate must be
+	
+		$$ \omega^* = \mathbb{E} \left[ \theta \right] $$
+		
+	If $\mathbb{E}[\theta] \geq r$, then all workers accept employment at a firm; if $\mathbb{E}[\theta] < r$, then none do. Which type of equilibrium arises depends on the relative fraction of good and bad workers. For example, if there is a high fraction of low-productivity workers then, because firms cannot distinguish good workers from bad, they will be unwilling to hire any workers at a wage that is sufficient to have them accept employment, i.e.
+	
+		$$ \mathbb{E} \left[ \theta \right] < r $$
+		
+	On the other hand, if there are very few low-productivity workers, then the average productivity of the workforce will be avoce $r$, and so the firms will be willing to hire workers at a wage that they are willing to accept, i.e.
+		
+	$$ \mathbb{E} \left[ \theta \right] \geq r $$
+	
+	In one case, too many workers are employed relative to the Pareto optimal allocation, and in the other too few, and therefore,  neither case is Pareto-optimal since 
+	
+	$$\Theta^* \neq \left\{ \theta \colon \theta \geq r \right\}. $$
+	
+	The cause of this failure of the competitive allocation to be Pareto optimal is simple to see: because firms are unable to distinguish among workers of differing productivities, the market is unable to allocate workers efficiently between firms and home production. ~\bigskip
+	
+	Note: If workers could not observe their own type $\theta$ the same allocation would result. Thus, knowledge does not do harm in this example, but cannot be optimally processed by the market.
+\end{example}
+
+\section{Signalling}
+
+In the model with adverse selection, good workers were underpaid because they were unable to credibly inform firms about their productivity. Hence, they should have an incentive to \enquote{signal} their productivity, if this is possible. This will now be investigated in a simple setting.
+
+\subsection{Simple Signalling}
+
+\subsubsection{Model}
+
+In this section we assume that there are two firms competing for hiring workers. Furthermore, there are only two types of workers, $L$ and $H$, with $0 < \theta_L < \theta_H$ and $\lambda = \mathbb{P}(\theta = \theta_H)$ where $0 < \lambda < 1$. We assume 
+
+	$$ 0 \leq r(\theta_L) \leq r(\theta_H) < \mathbb{E}[\theta]. $$
+
+The important extension of our previous model is that before entering the job market a worker can signal, this can have the form of getting some education and the amount of education that a worker receives is observable. Regardless of the type, signalling does nothing for a worker's productivity. Type $\theta_H$  can produce such a signal at cost $c$, and we assume that type $\theta_L$ cannot produce a signal, where
+
+	$$ 0 \leq c < \theta_H - \mathbb{E}[\theta] $$
+
+\subsubsection{Timing}
+
+In this setting, we can identify four stages developing from setup to possible employment:
+
+\begin{enumerate}
+	\item Nature chooses workers' types, observed only by them
+	\item Workers may produce a signal
+	\item Firms observe signals and simultaneously announce wage offers
+	\item Workers decide whether to join a firm or not. If they are indifferent, they choose either option with probability $p = 0.5$.
+\end{enumerate}
+
+\textbf{Stage 3}: ~\smallskip
+
+At the fourth stage the decision is merely where a worker maximises his profit, we will therefore start with stage three. Here, we notice that wages cannot depend on the type $\theta$ as those aren't observable. However, the wages can depend on the signal:
+
+\begin{itemize}
+	\item Let $\omega_s$ be the wage offered to a worker who has signalled
+	\item Let $\omega_{nonS}$ be the wage offered to a worker who has not signalled.
+\end{itemize}
+
+The competitive equilibrium that emerges is hence
+$$ \omega_s = \theta_H ~\text{ and }~ \omega_{nonS} \in \left[\theta_L, \mathbb{E}[\theta] \right] $$
+
+\textbf{Stage 2}: ~\smallskip
+
+As by assumption $0 \leq c < \theta_H - \mathbb{E}[\theta]$ holds, all workers of type $H$ will now signal.
+
+\subsubsection{Consider two sub-cases}
+
+\begin{itemize}
+	\item $r(\theta_L) \leq r(\theta_H) \leq \theta_L$: Signalling is wasteful
+	\item $\theta_L < r(\theta_L) < r(\theta_H) < \mathbb{E} \left[ \theta \right]$: Signalling may be useful
+\end{itemize}
+
+Hint: In both cases, the equilibrium in the pure adverse selection model (without signalling) is 
+
+	$$ \omega^* = \mathbb{E}[\theta] $$
+
+\end{document}
